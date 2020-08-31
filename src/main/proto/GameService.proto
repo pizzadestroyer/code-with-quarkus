@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "fi.melvin.game";
+option java_outer_classname = "GameServerProto";
+
+package server;
+
+message ActorUpdateRequest {
+  string actorId = 1;
+  float x = 2;
+  float y = 3;
+  float z = 4;
+}
+
+message ActorUpdateResponse {
+  string actorId = 1;
+  float x = 2;
+  float y = 3;
+  float z = 4;
+}
+
+service Game {
+  rpc ActorUpdates(stream ActorUpdateRequest) returns (stream ActorUpdateResponse);
+}
